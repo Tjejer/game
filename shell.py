@@ -12,10 +12,25 @@ import game
 class Shell(cmd.Cmd):
     """Command actions to pig game."""
 
+    game = None
+
     def __init__(self):
         """Init the object."""
         super().__init__()
         self.game = game.Game()
-    
-    def highscores(self):
-        self.game.show_scores()
+
+    def do_highscores(self, _):
+        """Show highscores to the player."""
+        lines = self.game.show_scores()
+        print(lines)
+        for line in lines:
+            score, player_id = line.split(':')
+            print(f'Score: {score}, Player_id {player_id}')
+
+    def do_log_score(self, score, player_id):
+        """Log score for player."""
+        self.game.log_score1(score, player_id)
+
+    def do_reset_highscores(self):
+        """Empty whole highscore file."""
+        self.game.empty_highscores()
