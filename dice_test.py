@@ -1,17 +1,14 @@
-from src import dice
+import dice
 import unittest
 import random
 
-class TestDice_Class(unittest.testcase):
+class TestDice_Class(unittest.TestCase):
     def test_createdice(self):
         dice1 = dice.Dice()
         self.assertIsInstance(dice1, dice.Dice)
 
     def test_turn(self):
         dice1 = dice.Dice()
-        dice_value = dice1.turn
-        res = dice_value
+        res = dice1.turn()
         exp = [1, 2, 3, 4, 5, 6]
-        self.assertIsIn(res, exp)
-
-        
+        self.assertIn(res, exp)

@@ -1,7 +1,8 @@
-from src import dice_hand
-import unittest
 
-class TestDice_handClass(unittest.testcase):
+import unittest
+import dice_hand
+
+class TestDice_handClass(unittest.TestCase):
     def test_createdicehand(self):
         dice_hand1 = dice_hand.Dice_hand()
         self.assertIsInstance(dice_hand1, dice_hand.Dice_hand)

@@ -15,6 +15,11 @@ class Game():
         """Init the object."""
         random.seed()
 
+    def start_game(self, amount_of_players):
+        """Start the game."""
+        self.create_players(amount_of_players)
+        self.randomize_player(self.player1, self.player2)
+
     def show_scores(self):
         """Show scores to the player."""
         self.log_score1(12, 6)
@@ -50,3 +55,13 @@ class Game():
 
             self.player1 = player.Player(player1_id, player1_name)
             self.player2 = player.Player(player2_id, player2_name)
+    
+    def randomize_player(self, x, y):
+        current = random.randint(1 ,2)
+
+        if current == 1:
+            print("Player", x.get_name(), "will start the game.")
+            return x
+        else:
+            print("Player", y.get_name(), "will start the game.")
+            return y

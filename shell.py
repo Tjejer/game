@@ -22,7 +22,7 @@ class Shell(cmd.Cmd):
     def do_start(self, _):
         """Start the game."""
         amount_of_players = int(input("Enter 1 for Player vs. AI or enter 2 for Player vs Player."))
-        self.game.create_players(amount_of_players)
+        self.game.start_game(amount_of_players)
 
     def do_highscores(self, _):
         """Show highscores to the player."""
