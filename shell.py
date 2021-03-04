@@ -6,6 +6,7 @@ You can read about the cmd module in the docs:
 """
 
 import cmd
+import sys
 import game
 
 
@@ -42,6 +43,7 @@ or enter 2 for Player vs Player."))
         self.game.empty_highscores()
 
     def do_rules(self):
+        """Show the rules."""
         print("Start the game by writing 'start'.\
             Roll the dice as many times you want by writing ‘roll’.\
             To hold and not roll another time, giving the turn to\
@@ -51,3 +53,20 @@ or enter 2 for Player vs Player."))
         """Change current players name."""
         msg = self.game.change_name(new_name)
         print(msg)
+
+    def do_roll(self):
+        """Roll the dice."""
+        value = self.game.roll_dice()
+        if value == 1:
+            print(f'You rolled a 1, You scored nothing.')
+            self.game.change_turn()
+        elif value != 1:
+            print(f'You rolled a {value}')
+
+    def do_hold(self):
+        """Change turns, save score."""
+        self.game.end_turn()
+
+    def do_quit(self):
+        """Quit game."""
+        sys.exit()

@@ -4,6 +4,8 @@ import random
 import os
 import highscore
 import player
+import dice
+import dice_hand
 
 
 class Game():
@@ -12,18 +14,38 @@ class Game():
     player1 = None
     player2 = None
     current_player = None
+    dicerino = None
+    dicerino_hand = None
 
     def __init__(self):
         """Init the object."""
         random.seed()
 
+    def roll_dice(self):
+        """Roll the dice."""
+        value = self.dicerino.turn()
+        if value != 1:
+            self.dicerino_hand.add_score(value)
+            return value
+        elif value == 1:
+            self.dicerino_hand.empty_score()
+            return value
+
+    def end_turn(self):
+        """Ends the player's turn."""
+        score = self.dicerino_hand.get_score()
+        self.current_player.add_score(score)
+        self.change_turn()
+
     def start_game(self, amount_of_players):
         """Start the game. Randomize first player. Set it to current player."""
+        self.dicerino = dice.Dice()
+        self.dicerino_hand = dice_hand.DiceHand()
         self.create_players(amount_of_players)
         self.player1, self.player2 = \
             self.randomize_player(self.player1, self.player2)
         self.current_player = self.player1
-    
+
     def change_turn(self):
         """Change turns."""
         if self.current_player == self.player1:

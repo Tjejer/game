@@ -6,11 +6,13 @@ class Player():
 
     player_id = None
     name = None
+    current_score = None
 
     def __init__(self, player_id, name):
         """Player created."""
         self.player_id = int(player_id)
         self.name = name
+        self.current_score = 0
 
     def change_name(self, new_name):
         """Change the players name."""
@@ -20,3 +22,7 @@ class Player():
     def get_name(self):
         """Reteveing the players name."""
         return self.name
+
+    def add_score(self, score):
+        """Add score to player current player's score."""
+        self.current_score += score
