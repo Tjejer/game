@@ -13,7 +13,7 @@ class Player():
         self.name = name
 
     def change_name(self, new_name):
-        """Changin the players name."""
+        """Change the players name."""
         self.name = new_name
         return self.name
 

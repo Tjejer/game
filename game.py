@@ -18,7 +18,7 @@ class Game():
     def start_game(self, amount_of_players):
         """Start the game."""
         self.create_players(amount_of_players)
-        self.randomize_player(self.player1, self.player2)
+        self.player1, self.player2 = self.randomize_player(self.player1, self.player2)
 
     def show_scores(self):
         """Show scores to the player."""
@@ -37,7 +37,7 @@ class Game():
     def empty_highscores(self):
         """Empty all highscores info."""
         os.remove("file.txt")
-    
+
     def create_players(self, amount_of_players):
         """Creating the players for the game."""
         if amount_of_players == 1:
@@ -55,13 +55,14 @@ class Game():
 
             self.player1 = player.Player(player1_id, player1_name)
             self.player2 = player.Player(player2_id, player2_name)
-    
+
     def randomize_player(self, x, y):
+        """Randomize player."""
         current = random.randint(1 ,2)
 
         if current == 1:
             print("Player", x.get_name(), "will start the game.")
-            return x
+            return x, y
         else:
             print("Player", y.get_name(), "will start the game.")
-            return y
+            return y, x
