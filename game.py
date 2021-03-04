@@ -8,17 +8,28 @@ import player
 
 class Game():
     """The game class."""
+
     player1 = None
     player2 = None
+    current_player = None
 
     def __init__(self):
         """Init the object."""
         random.seed()
 
     def start_game(self, amount_of_players):
-        """Start the game."""
+        """Start the game. Randomize first player. Set it to current player."""
         self.create_players(amount_of_players)
-        self.player1, self.player2 = self.randomize_player(self.player1, self.player2)
+        self.player1, self.player2 = \
+            self.randomize_player(self.player1, self.player2)
+        self.current_player = self.player1
+    
+    def change_turn(self):
+        """Change turns."""
+        if self.current_player == self.player1:
+            self.current_player = self.player2
+        elif self.current_player == self.player2:
+            self.current_player = self.player1
 
     def show_scores(self):
         """Show scores to the player."""
@@ -39,7 +50,7 @@ class Game():
         os.remove("file.txt")
 
     def create_players(self, amount_of_players):
-        """Creating the players for the game."""
+        """Create the players for the game."""
         if amount_of_players == 1:
             player1_name = str(input("Enter name for player 1: "))
             player1_id = int(input("Enter id for player 1: "))
@@ -56,13 +67,18 @@ class Game():
             self.player1 = player.Player(player1_id, player1_name)
             self.player2 = player.Player(player2_id, player2_name)
 
-    def randomize_player(self, x, y):
+    def randomize_player(self, player1, player2):
         """Randomize player."""
-        current = random.randint(1 ,2)
+        current = random.randint(1, 2)
 
         if current == 1:
-            print("Player", x.get_name(), "will start the game.")
-            return x, y
+            print("Player", player1.get_name(), "will start the game.")
+            return player1, player2
         else:
-            print("Player", y.get_name(), "will start the game.")
-            return y, x
+            print("Player", player2.get_name(), "will start the game.")
+            return player2, player1
+
+    def change_name(self, new_name):
+        """Change the current players name."""
+        self.current_player.change_name(new_name)
+        return f'Your name has been changed to {new_name}'

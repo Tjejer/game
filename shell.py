@@ -21,7 +21,8 @@ class Shell(cmd.Cmd):
 
     def do_start(self, _):
         """Start the game."""
-        amount_of_players = int(input("Enter 1 for Player vs. AI or enter 2 for Player vs Player."))
+        amount_of_players = int(input("Enter 1 for Player vs. AI \
+or enter 2 for Player vs Player."))
         self.game.start_game(amount_of_players)
 
     def do_highscores(self, _):
@@ -39,3 +40,14 @@ class Shell(cmd.Cmd):
     def do_reset_highscores(self):
         """Empty whole highscore file."""
         self.game.empty_highscores()
+
+    def do_rules(self):
+        print("Start the game by writing 'start'.\
+            Roll the dice as many times you want by writing ‘roll’.\
+            To hold and not roll another time, giving the turn to\
+            the other player write ‘hold’.")
+
+    def do_change_name(self, new_name):
+        """Change current players name."""
+        msg = self.game.change_name(new_name)
+        print(msg)

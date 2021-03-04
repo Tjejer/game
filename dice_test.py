@@ -1,10 +1,11 @@
 """Class for unittest of dice class."""
 
-import dice
 import unittest
-import random
+import dice
 
-class TestDice_Class(unittest.TestCase):
+
+class TestDiceClass(unittest.TestCase):
+    """Test for dice class."""
 
     def test_createdice(self):
         """Test to create a dice."""

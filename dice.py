@@ -2,8 +2,10 @@
 
 import random
 
+
 class Dice():
     """Create class."""
+
     dice_value = None
 
     def __init__(self):
@@ -12,5 +14,5 @@ class Dice():
 
     def turn(self):
         """Turn dice."""
-        self.dice_value = random.randint(1,6)
+        self.dice_value = random.randint(1, 6)
         return self.dice_value
