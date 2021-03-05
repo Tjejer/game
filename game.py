@@ -24,7 +24,8 @@ class Game():
         random.seed()
 
     def error_info(self):
-        """Execute when player needs to start the game first to run the command."""
+        """Execute when player needs to start the game first\
+ to run the command."""
         print('Start the game before writing this command.')
 
     def end_game(self):
@@ -37,13 +38,15 @@ class Game():
         self.dicerino_hand = None
         self.game_running = False
         print('End of the game.')
-        print('Start the game again by writing "start"')        
+        print('Start the game again by writing "start"')
 
     def game_won(self):
         """When the player has scored 100 points they win."""
-        total_score = self.current_player.get_score()+self.dicerino_hand.get_score()
+        total_score = self.current_player.get_score() +\
+            self.dicerino_hand.get_score()
         winner_name = self.current_player.get_name()
-        print(f'Congratz {winner_name}! You won the game with {total_score} points.')
+        print(f'Congratz {winner_name}!\
+             You won the game with {total_score} points.')
         self.log_scores(total_score, self.current_player.get_id())
         self.end_game()
 
@@ -52,13 +55,12 @@ class Game():
         value = self.dicerino.turn()
         if value != 1:
             self.dicerino_hand.add_score(value)
-            return value
         elif value == 1:
             self.dicerino_hand.empty_score()
-            return value
+        return value
 
     def hold_turn(self):
-        """Ends the player's turn."""
+        """End the player's turn."""
         score = self.dicerino_hand.get_score()
         self.current_player.add_score(score)
         self.change_turn()
@@ -122,7 +124,6 @@ class Game():
     def randomize_player(self, player1, player2):
         """Randomize player."""
         current = random.randint(1, 2)
-
         if current == 1:
             print("Player", player1.get_name(), "will start the game.")
             return player1, player2

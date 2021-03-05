@@ -27,3 +27,24 @@ class TestPlayerClass(unittest.TestCase):
         exp = player1.name
         res = player1.get_name()
         self.assertEqual(exp, res)
+
+    def test_add_score(self):
+        """Test to add score."""
+        player1 = player.Player(1, "Kalle")
+        res = player1.add_score(6)
+        exp = player1.current_score
+        self.assertEqual(exp, res)
+
+    def test_get_score(self):
+        """Test to get player's score."""
+        player1 = player.Player(1, "Kalle")
+        exp = player1.current_score
+        res = player1.get_score()
+        self.assertEqual(res, exp)
+
+    def test_get_id(self):
+        """Test to get the player's id."""
+        player1 = player.Player(1, "Kalle")
+        exp = player1.player_id
+        res = player1.get_id()
+        self.assertEqual(exp, res)

@@ -3,6 +3,7 @@
 
 class DiceHand():
     """Dice hand class."""
+
     dice_list = None
 
     def __init__(self):
@@ -17,7 +18,9 @@ class DiceHand():
     def empty_score(self):
         """Empty score list."""
         self.dice_list = []
+        return self.dice_list
 
     def get_score(self):
+        """Get the sum of the scores in dicehand."""
         score = sum(self.dice_list)
         return score

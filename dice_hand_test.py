@@ -18,3 +18,18 @@ class TestDiceHandClass(unittest.TestCase):
         res = my_list[0]
         exp = 5
         self.assertEqual(res, exp)
+
+    def test_empty_score(self):
+        """Test emptying the list."""
+        dice_hand1 = dice_hand.DiceHand()
+        exp = []
+        res = dice_hand1.empty_score()
+        self.assertEqual(exp, res)
+
+    def test_get_score(self):
+        """Test getting the score."""
+        dice_hand1 = dice_hand.DiceHand()
+        dice_hand1.dice_list = [2, 1]
+        exp = 3
+        res = dice_hand1.get_score()
+        self.assertEqual(exp, res)
