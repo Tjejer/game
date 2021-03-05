@@ -16,10 +16,36 @@ class Game():
     current_player = None
     dicerino = None
     dicerino_hand = None
+    highscores = highscore.Highscore("file.txt")
+    game_running = False
 
     def __init__(self):
         """Init the object."""
         random.seed()
+
+    def error_info(self):
+        """Execute when player needs to start the game first to run the command."""
+        print('Start the game before writing this command.')
+
+    def end_game(self):
+        """End the game."""
+        self.game_running = False
+        self.player1 = None
+        self.player2 = None
+        self.current_player = None
+        self.dicerino = None
+        self.dicerino_hand = None
+        self.game_running = False
+        print('End of the game.')
+        print('Start the game again by writing "start"')        
+
+    def game_won(self):
+        """When the player has scored 100 points they win."""
+        total_score = self.current_player.get_score()+self.dicerino_hand.get_score()
+        winner_name = self.current_player.get_name()
+        print(f'Congratz {winner_name}! You won the game with {total_score} points.')
+        self.log_scores(total_score, self.current_player.get_id())
+        self.end_game()
 
     def roll_dice(self):
         """Roll the dice."""
@@ -31,7 +57,7 @@ class Game():
             self.dicerino_hand.empty_score()
             return value
 
-    def end_turn(self):
+    def hold_turn(self):
         """Ends the player's turn."""
         score = self.dicerino_hand.get_score()
         self.current_player.add_score(score)
@@ -39,6 +65,7 @@ class Game():
 
     def start_game(self, amount_of_players):
         """Start the game. Randomize first player. Set it to current player."""
+        self.game_running = True
         self.dicerino = dice.Dice()
         self.dicerino_hand = dice_hand.DiceHand()
         self.create_players(amount_of_players)
@@ -48,24 +75,27 @@ class Game():
 
     def change_turn(self):
         """Change turns."""
+        current_score = self.current_player.get_score()
+        print(f'Your score is now {current_score}.')
         if self.current_player == self.player1:
             self.current_player = self.player2
+            self.dicerino_hand.empty_score()
+            print(f'Now it is {self.player2.get_name()} turn')
         elif self.current_player == self.player2:
             self.current_player = self.player1
+            self.dicerino_hand.empty_score()
+            print(f'Now it is {self.player1.get_name()} turn')
 
     def show_scores(self):
         """Show scores to the player."""
-        self.log_score1(12, 6)
-        high = highscore.Highscore("file.txt")
-        highscores = high.get_scores()
-        high.sort_scores(highscores)
-        highscores = high.get_scores()
-        return highscores
+        highscore_list = self.highscores.get_scores()
+        self.highscores.sort_scores(highscore_list)
+        highscore_list = self.highscores.get_scores()
+        return highscore_list
 
-    def log_score1(self, score, player_id):
+    def log_scores(self, score, player_id):
         """Log scores into the file."""
-        high = highscore.Highscore("file.txt")
-        high.log_score(score, player_id)
+        self.highscores.log_score(score, player_id)
 
     def empty_highscores(self):
         """Empty all highscores info."""

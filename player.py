@@ -26,3 +26,11 @@ class Player():
     def add_score(self, score):
         """Add score to player current player's score."""
         self.current_score += score
+
+    def get_score(self):
+        """Get player's score."""
+        return self.current_score
+    
+    def get_id(self):
+        """Get player's id."""
+        return self.player_id

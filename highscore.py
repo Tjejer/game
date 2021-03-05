@@ -35,4 +35,3 @@ class Highscore():
         for line in lines:
             high_file.write(str(line) + '\n')
         high_file.close()
-        return lines
