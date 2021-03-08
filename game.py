@@ -18,6 +18,7 @@ class Game():
     dicerino_hand = None
     highscores = highscore.Highscore("file.txt")
     game_running = False
+    ai_turn = None
 
     def __init__(self):
         """Init the object."""
@@ -46,24 +47,52 @@ class Game():
             self.dicerino_hand.get_score()
         winner_name = self.current_player.get_name()
         print(f'Congratz {winner_name}!\
-             You won the game with {total_score} points.')
+You won the game with {total_score} points.')
         self.log_scores(total_score, self.current_player.get_id())
         self.end_game()
 
+    def auto_play(self):
+        """Auto play for ai."""
+        if self.game_running:
+            random_value = random.randint(1, 5)
+            while random_value > 2:
+                value = self.roll_dice()
+                if value == 1:
+                    break
+                random_value = random.randint(1, 5)
+            self.hold_turn()
+        else:
+            self.error_info()
+
     def roll_dice(self):
         """Roll the dice."""
-        value = self.dicerino.turn()
-        if value != 1:
-            self.dicerino_hand.add_score(value)
-        elif value == 1:
-            self.dicerino_hand.empty_score()
-        return value
+        if self.game_running:
+            value = self.dicerino.turn()
+            if value != 1:
+                self.dicerino_hand.add_score(value)
+                print(f'You rolled a {value}')
+                total_score = self.current_player.get_score() \
+                    + self.dicerino_hand.get_score()
+                if total_score >= 10:
+                    self.game_won()
+            elif value == 1:
+                self.dicerino_hand.empty_score()
+                print(f'You rolled a 1, You scored nothing.')
+                self.change_turn()
+            return value
+        else:
+            self.error_info()
+            print("hehe")
+            return None
 
     def hold_turn(self):
         """End the player's turn."""
-        score = self.dicerino_hand.get_score()
-        self.current_player.add_score(score)
-        self.change_turn()
+        if self.game_running:
+            score = self.dicerino_hand.get_score()
+            self.current_player.add_score(score)
+            self.change_turn()
+        else:
+            self.error_info()
 
     def start_game(self, amount_of_players):
         """Start the game. Randomize first player. Set it to current player."""
@@ -74,6 +103,8 @@ class Game():
         self.player1, self.player2 = \
             self.randomize_player(self.player1, self.player2)
         self.current_player = self.player1
+        if self.current_player.get_id() == 666:
+            self.auto_play()
 
     def change_turn(self):
         """Change turns."""
@@ -87,6 +118,8 @@ class Game():
             self.current_player = self.player1
             self.dicerino_hand.empty_score()
             print(f'Now it is {self.player1.get_name()} turn')
+        if self.current_player.get_id() == 666:
+            self.auto_play()
 
     def show_scores(self):
         """Show scores to the player."""

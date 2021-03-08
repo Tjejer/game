@@ -76,16 +76,7 @@ new name.\
     def do_roll(self, _):
         """Roll the dice."""
         if self.game.game_running:
-            value = self.game.roll_dice()
-            if value == 1:
-                print(f'You rolled a 1, You scored nothing.')
-                self.game.change_turn()
-            elif value != 1:
-                print(f'You rolled a {value}')
-                total_score = self.game.current_player.get_score() +\
-                    self.game.dicerino_hand.get_score()
-                if total_score >= 10:
-                    self.game.game_won()
+            self.game.roll_dice()
         else:
             self.game.error_info()
 
