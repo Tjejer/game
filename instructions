@@ -1,0 +1,18 @@
+The game is built on cooperation between shell and game. The shell deals with the user inputs.
+How we chose to implement intelligence:
+We chose to not have a a separate intelligence class. Instead we thought it would be much cleaner and better to implement it as a method inside the game.py file.
+
+
+unzip the game.zip map and navigate to the folder through the terminal/git bash.
+ write 'make install' to install the needed packages
+'write 'python3 main.py' in your console to run the code.
+'make test'
+'make coverage'
+
+For software documentation:
+istall graphviz:
+Linux: apt install graphviz
+Mac OS: brew install graphviz
+Windows: choco install graphviz
+
+Now you can write 'make doc' to generate the documentation for the program. You can write make clean to remove all the docs.

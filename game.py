@@ -38,7 +38,6 @@ class Game():
         self.current_player = None
         self.dicerino = None
         self.dicerino_hand = None
-        self.game_running = False
         print('End of the game.')
         print('Start the game again by writing "start"')
 
