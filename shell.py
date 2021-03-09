@@ -27,7 +27,6 @@ or enter 2 for Player vs Player."))
     def do_highscores(self, _):
         """Show highscores to the player."""
         lines = self.game.show_scores()
-        print(lines)
         for line in lines:
             score, player_id = line.split(':')
             print(f'Score: {score}, Player_id {player_id}')

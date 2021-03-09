@@ -12,10 +12,18 @@ class Game():
     """The game class."""
 
     highscores = highscore.Highscore("file.txt")
+    win_score = 100
 
     def __init__(self):
         """Init the object."""
         random.seed()
+        self.game_running = False
+        self.player1 = None
+        self.player2 = None
+        self.current_player = None
+        self.dicerino = None
+        self.dicerino_hand = None
+        self.game_running = False
 
     def error_info(self):
         """Execute when player needs to start the game first\
@@ -64,7 +72,7 @@ You won the game with {total_score} points.')
                 print(f'You rolled a {value}')
                 total_score = self.current_player.get_score() \
                     + self.dicerino_hand.get_score()
-                if total_score >= 10:
+                if total_score >= self.win_score:
                     self.game_won()
             elif value == 1:
                 self.dicerino_hand.empty_score()

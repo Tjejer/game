@@ -59,7 +59,6 @@ or enter 2 for Player vs Player.&#34;))
     def do_highscores(self, _):
         &#34;&#34;&#34;Show highscores to the player.&#34;&#34;&#34;
         lines = self.game.show_scores()
-        print(lines)
         for line in lines:
             score, player_id = line.split(&#39;:&#39;)
             print(f&#39;Score: {score}, Player_id {player_id}&#39;)
@@ -163,7 +162,6 @@ or enter 2 for Player vs Player.&#34;))
     def do_highscores(self, _):
         &#34;&#34;&#34;Show highscores to the player.&#34;&#34;&#34;
         lines = self.game.show_scores()
-        print(lines)
         for line in lines:
             score, player_id = line.split(&#39;:&#39;)
             print(f&#39;Score: {score}, Player_id {player_id}&#39;)
@@ -285,7 +283,6 @@ You will not have your highscore displayed in the highscores.&#39;)
 <pre><code class="python">def do_highscores(self, _):
     &#34;&#34;&#34;Show highscores to the player.&#34;&#34;&#34;
     lines = self.game.show_scores()
-    print(lines)
     for line in lines:
         score, player_id = line.split(&#39;:&#39;)
         print(f&#39;Score: {score}, Player_id {player_id}&#39;)</code></pre>

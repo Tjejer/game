@@ -41,10 +41,18 @@ class Game():
     &#34;&#34;&#34;The game class.&#34;&#34;&#34;
 
     highscores = highscore.Highscore(&#34;file.txt&#34;)
+    win_score = 100
 
     def __init__(self):
         &#34;&#34;&#34;Init the object.&#34;&#34;&#34;
         random.seed()
+        self.game_running = False
+        self.player1 = None
+        self.player2 = None
+        self.current_player = None
+        self.dicerino = None
+        self.dicerino_hand = None
+        self.game_running = False
 
     def error_info(self):
         &#34;&#34;&#34;Execute when player needs to start the game first\
@@ -93,7 +101,7 @@ You won the game with {total_score} points.&#39;)
                 print(f&#39;You rolled a {value}&#39;)
                 total_score = self.current_player.get_score() \
                     + self.dicerino_hand.get_score()
-                if total_score &gt;= 10:
+                if total_score &gt;= self.win_score:
                     self.game_won()
             elif value == 1:
                 self.dicerino_hand.empty_score()
@@ -207,10 +215,18 @@ You won the game with {total_score} points.&#39;)
     &#34;&#34;&#34;The game class.&#34;&#34;&#34;
 
     highscores = highscore.Highscore(&#34;file.txt&#34;)
+    win_score = 100
 
     def __init__(self):
         &#34;&#34;&#34;Init the object.&#34;&#34;&#34;
         random.seed()
+        self.game_running = False
+        self.player1 = None
+        self.player2 = None
+        self.current_player = None
+        self.dicerino = None
+        self.dicerino_hand = None
+        self.game_running = False
 
     def error_info(self):
         &#34;&#34;&#34;Execute when player needs to start the game first\
@@ -259,7 +275,7 @@ You won the game with {total_score} points.&#39;)
                 print(f&#39;You rolled a {value}&#39;)
                 total_score = self.current_player.get_score() \
                     + self.dicerino_hand.get_score()
-                if total_score &gt;= 10:
+                if total_score &gt;= self.win_score:
                     self.game_won()
             elif value == 1:
                 self.dicerino_hand.empty_score()
@@ -352,6 +368,10 @@ You won the game with {total_score} points.&#39;)
 <h3>Class variables</h3>
 <dl>
 <dt id="project.game.Game.highscores"><code class="name">var <span class="ident">highscores</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="project.game.Game.win_score"><code class="name">var <span class="ident">win_score</span></code></dt>
 <dd>
 <div class="desc"></div>
 </dd>
@@ -587,7 +607,7 @@ You won the game with {total_score} points.&#39;)
             print(f&#39;You rolled a {value}&#39;)
             total_score = self.current_player.get_score() \
                 + self.dicerino_hand.get_score()
-            if total_score &gt;= 10:
+            if total_score &gt;= self.win_score:
                 self.game_won()
         elif value == 1:
             self.dicerino_hand.empty_score()
@@ -671,6 +691,7 @@ You won the game with {total_score} points.&#39;)
 <li><code><a title="project.game.Game.roll_dice" href="#project.game.Game.roll_dice">roll_dice</a></code></li>
 <li><code><a title="project.game.Game.show_scores" href="#project.game.Game.show_scores">show_scores</a></code></li>
 <li><code><a title="project.game.Game.start_game" href="#project.game.Game.start_game">start_game</a></code></li>
+<li><code><a title="project.game.Game.win_score" href="#project.game.Game.win_score">win_score</a></code></li>
 </ul>
 </li>
 </ul>
