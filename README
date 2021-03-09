@@ -3,11 +3,13 @@ How we chose to implement intelligence:
 We chose to not have a a separate intelligence class. Instead we thought it would be much cleaner and better to implement it as a method inside the game.py file.
 
 
+To install the game on your computer:
 unzip the game.zip map and navigate to the folder through the terminal/git bash.
  write 'make install' to install the needed packages
 'write 'python3 main.py' in your console to run the code.
-'make test'
-'make coverage'
+write 'make test' to test for flake8 and pylint
+There are some errors that we chose to ignore with pylint(for example -> no-self-use) because we needed these methods for the program to function.
+write 'make coverage' to test for code test coverage
 
 For software documentation:
 istall graphviz:
