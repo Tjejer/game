@@ -34,8 +34,9 @@ or enter 2 for Player vs Player."))
     def do_cheat(self, _):
         """Cheat and finish the game. Nothing will be scored nor highscored."""
         if self.game.game_running:
-            print('You chose to cheat. This is unacceptable!\
-    You will not have your highscore displayed in the highscores.')
+            print('You chose to cheat. You have now scored a 100 points and\
+ automatically won the game. But since you are a cheater you will not be\
+ placed on the highscore list.')
             self.game.end_game()
         else:
             self.game.error_info()

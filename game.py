@@ -68,14 +68,14 @@ You won the game with {total_score} points.')
             value = self.dicerino.turn()
             if value != 1:
                 self.dicerino_hand.add_score(value)
-                print(f'You rolled a {value}')
+                print(f'Rolled a {value}')
                 total_score = self.current_player.get_score() \
                     + self.dicerino_hand.get_score()
                 if total_score >= self.win_score:
                     self.game_won()
             elif value == 1:
                 self.dicerino_hand.empty_score()
-                print(f'You rolled a 1, You scored nothing.')
+                print(f'Rolled a 1, Scored nothing.')
                 self.change_turn()
             return value
 
