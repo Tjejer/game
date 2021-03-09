@@ -11,14 +11,7 @@ import dice_hand
 class Game():
     """The game class."""
 
-    player1 = None
-    player2 = None
-    current_player = None
-    dicerino = None
-    dicerino_hand = None
     highscores = highscore.Highscore("file.txt")
-    game_running = False
-    ai_turn = None
 
     def __init__(self):
         """Init the object."""
@@ -61,8 +54,6 @@ You won the game with {total_score} points.')
                     break
                 random_value = random.randint(1, 5)
             self.hold_turn()
-        else:
-            self.error_info()
 
     def roll_dice(self):
         """Roll the dice."""
@@ -80,10 +71,6 @@ You won the game with {total_score} points.')
                 print(f'You rolled a 1, You scored nothing.')
                 self.change_turn()
             return value
-        else:
-            self.error_info()
-            print("hehe")
-            return None
 
     def hold_turn(self):
         """End the player's turn."""
@@ -91,8 +78,6 @@ You won the game with {total_score} points.')
             score = self.dicerino_hand.get_score()
             self.current_player.add_score(score)
             self.change_turn()
-        else:
-            self.error_info()
 
     def start_game(self, amount_of_players):
         """Start the game. Randomize first player. Set it to current player."""

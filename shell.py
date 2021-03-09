@@ -13,8 +13,6 @@ import game
 class Shell(cmd.Cmd):
     """Command actions to pig game."""
 
-    game = None
-
     def __init__(self):
         """Init the object."""
         super().__init__()
@@ -34,7 +32,7 @@ or enter 2 for Player vs Player."))
             score, player_id = line.split(':')
             print(f'Score: {score}, Player_id {player_id}')
 
-    def do_cheat(self):
+    def do_cheat(self, _):
         """Cheat and finish the game. Nothing will be scored nor highscored."""
         if self.game.game_running:
             print('You chose to cheat. This is unacceptable!\

@@ -6,8 +6,6 @@
 class Highscore():
     """Createing class."""
 
-    file_name = None
-
     def __init__(self, file_name):
         """When highscore is created."""
         self.file_name = file_name

@@ -6,8 +6,6 @@ import random
 class Dice():
     """Create class."""
 
-    dice_value = None
-
     def __init__(self):
         """Initialize dice."""
         self.dice_value = None

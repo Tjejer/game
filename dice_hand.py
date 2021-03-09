@@ -4,8 +4,6 @@
 class DiceHand():
     """Dice hand class."""
 
-    dice_list = None
-
     def __init__(self):
         """Dice hand created."""
         self.dice_list = []

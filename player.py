@@ -4,10 +4,6 @@
 class Player():
     """Player classing."""
 
-    player_id = None
-    name = None
-    current_score = None
-
     def __init__(self, player_id, name):
         """Player created."""
         self.player_id = int(player_id)
